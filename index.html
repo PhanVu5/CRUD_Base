@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Quản lý lớp</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!--Main CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Loading CSS-->
+    <link rel="stylesheet" href="css/loading.css">
+    <!--Delete event-->
+    <link rel="stylesheet" href="./css/ModalDelete.css">
+</head>
+
+<body>
+    <div class="main">
+        <container>
+            <div class="header">
+                <h1>Danh Sách Đăng Ký Dự Thi HSGQG</h1>
+            </div>
+            <div class="filter">
+                <label>Find user: </label>
+                <select onchange="showGetData()" name="class" id="rd-class">
+                    <option value="" id="">---Chọn lớp của bạn---</option>
+                    <option value="Class 12" id="">Class 12</option>
+                    <option value="Class 11" id="">Class 11</option>
+                    <option value="Class 10" id="">Class 10</option>
+                </select>
+            </div>
+            <div class="add">
+                <button id="add-new" onclick="window.location.href = './PageCreat.html'">Add user</button>
+            </div>
+        </container>
+        <div>
+            <table id="table-mApi">
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Age</th>
+                        <th>Phone</th>
+                        <th>Functional</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Lấy data trên MockApi-->
+                </tbody>
+            </table>
+            <p id="tbl_length"></p>
+            <div id="loader"></div>
+        </div>
+        <div class="repost-cr">
+            <div id="name" style="display: inline-block; max-width: 500px;">
+                <h3 class="text-repost">Repost: </h3>
+                <input id="ip-name" type="text" placeholder=" Your Name" required>
+                <textarea id="ip-cmt" placeholder="Your Comment" required></textarea>
+                <button id="click-cmt" onclick="showInput()">Submit</button>
+                <h3 id="text-name"></h3>
+                <p id="text-Cmt"></p>
+
+            </div>
+        </div>
+        <div id="js_pagination" class="container">
+            <ul id="js_pagination_ul" class="pagination">
+                <!--Js Pagination-->
+            </ul>
+          </div>
+    </div>
+
+    <div class="modal_dlt">
+        <div class="handle">
+            <p class="text_dlt">You accept to delete data</p>
+            <span>
+                <button class="set_color_dlt" id="acpt_dlt" onclick="confirm()">Accept</button>
+                <button class="set_color_dlt" id="close_dlt">Close</button>
+            </span>
+        </div>
+    </div>
+    
+    <!-- Xử lý CRUD -->
+    <script src="./js/Comment-basic.js"></script>
+    <!-- Xử lý Table với Fetch -->
+    <script src="./js/SetTableGetData.js"></script>
+    <!--Pagination-->
+    <script>
+        
+    </script>
+    
+    
+</body>
+
+</html>
