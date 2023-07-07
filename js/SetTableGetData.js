@@ -103,9 +103,9 @@ async function createTable(data_new, id_p) {
   }
 }
 // create Pagination
+let count_pagination = 0;  
 function createPagination(data_new) {
   let temp = [];
-  let count = 0;  
   for (let k = 0; k < data_new.length; k += 10) {
     const row = [];
     for (let j = 0; j < 10; j++) {
@@ -126,11 +126,15 @@ function createPagination(data_new) {
   buttonBack.setAttribute('id', 'back_pagination');
   li.setAttribute('class', 'icon')
   li.addEventListener('click', () => {
-    if (count > 0) {
-      updateTable(data_new, count - 1);
-      --count;
-    } else if (count < 0){
+    if (count_pagination > 0) {
+      updateTable(data_new, count_pagination - 1);
+      --count_pagination;
+      console.log('1', count_pagination);
+    } else if (count_pagination < 0){
       alert('Limit min table');
+      console.log('2',count_pagination);
+      count_pagination = 0;
+      console.log('3', count_pagination);
     }
   })
   li.appendChild(buttonBack)
@@ -142,7 +146,8 @@ function createPagination(data_new) {
     button.textContent = i + 1;
     button.setAttribute('class', 'li_pagination')
     li.appendChild(button)
-    li.addEventListener('click', () => { updateTable(data_new, i); count = i })
+    li.addEventListener('click', () => { updateTable(data_new, i); count_pagination = i })
+    console.log('4', count_pagination);
     mainPagination.querySelector('#js_pagination_ul').appendChild(li);
   }
   li = document.createElement('li');
@@ -153,8 +158,8 @@ function createPagination(data_new) {
   li.setAttribute('class', 'icon')
 
   li.addEventListener('click', () => {
-    if (count < temp.length-1) {
-      updateTable(data_new, count + 1); ++count 
+    if (count_pagination < temp.length-1) {
+      updateTable(data_new, count_pagination + 1); ++count_pagination 
     } else {
       alert('Limit max table')
     }
@@ -202,6 +207,7 @@ async function showGetData() {
   if (valueClass === "") {
     filterClass = data;
     updateTable(filterClass, 0);
+    count_pagination = 0;
     updatePagination(filterClass)
   } else {
     filterClass = data.filter((obj) => {
@@ -209,6 +215,7 @@ async function showGetData() {
     })
     data = filterClass;
     updateTable(filterClass, 0);
+    count_pagination = 0;
     updatePagination(filterClass)
   }
   if (filterClass.length === 0) {
