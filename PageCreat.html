@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="./css/pageSpan.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>Add User</h3>
+    </div>
+
+    <container>
+        <ul class="ip__info">
+            <li><input type="text" id="ip-name-create" class="ip__name" placeholder="Name" required></li>
+            <span id="name_error"></span>
+            <li><select name="class" id="ip-class-create" class="selec__class">
+                <option value="" id="">---Select your class---</option>
+                <option value="Class 12" id="">Class 12</option>
+                <option value="Class 11" id="">Class 11</option>
+                <option value="Class 10" id="">Class 10</option>
+            </select></li>
+            <span id="class_error"></span>
+            <li><input type="number" id="ip-age-create" class="ip__age" placeholder="Age" required></li>
+            <span id="age_error"></span>
+            <li><input type="number" id="ip-phone-create" class="ip__phone" placeholder="Phone" required></li>
+            <span id="phone_error"></span>
+            <span class="function__select">
+                <button id="button-home-create" onclick="listenEvent()">Add user</button>
+                <button class="button__cancel" onclick=" window.location.href='index.html'">Cancel</button>
+            </span>
+        </ul>
+    </container>
+    
+    <!-- Xử lý Table với Fetch -->
+    <script src="./js/PostData.js"></script>
+    <!--Event-->
+    <script>
+        function listenEvent() {
+            try{
+            let createName = document.getElementById('ip-name-create');
+            let createClass = document.getElementById('ip-class-create');
+            let createAge = document.getElementById('ip-age-create');
+            let createPhone = document.getElementById('ip-phone-create');
+            //set erro name
+            function errorName(strName) {
+                let errorName = document.getElementById("name_error");
+                if (strName !== "" && /^[A-Za]*$/.test(removeVietnameseTones(strName).toUpperCase())){
+                    createName.value = standardizeName(strName);
+                    errorName.innerHTML = "";
+                    return true;
+                }else{
+                    console.log('erro');
+                    errorName.innerHTML = "Not number, empty or special characters";
+                    errorName.style.color = "red";
+                    return false;
+                }
+            }
+            // set error class
+            function errorClass(createClass) {
+                let errorClass = document.getElementById("class_error");
+                if (createClass == ""){
+                    errorClass.innerHTML = "Please select class";
+                    errorClass.style.color = "red";
+                    return false;
+                }    
+                errorClass.innerHTML = "";
+                return true;
+            }
+            // set error age
+            function errorAge(createAge) {
+                let errorAge = document.getElementById("age_error");
+                if (createAge <= 0 || createAge > 19){
+                    errorAge.innerHTML = "Age 0-18";
+                    errorAge.style.color = "red";
+                    return false;
+                }
+                errorAge.innerHTML = "";
+                return true;
+            }
+            // set error phone
+            function errorPhone(createPhone) {
+                let errorPhone = document.getElementById("phone_error");
+                if (createPhone.length !== 10){
+                    errorPhone.innerHTML = "10 phone numbers";
+                    errorPhone.style.color = "red";
+                    return false;
+                }
+                errorPhone.innerHTML = "";
+                return true;
+            }
+            //call error
+            errorName(createName.value);
+            errorClass(createClass.value);
+            errorAge(createAge.value);
+            errorPhone(createPhone.value); 
+            // check error and do it 
+            let conditionChar = errorName(createName.value) && errorClass(createClass.value) && errorAge(createAge.value) && errorPhone(createPhone.value); 
+            if (conditionChar){
+                showPost();
+            }
+            } catch(erro){
+                console.error('erro',erro);
+            }
+        }
+        let submitCreatUser = document.getElementById('ip-phone-create');
+        submitCreatUser.addEventListener('keypress', (event) => {
+            if (event.key == "Enter") {
+                event.preventDefault();
+                document.getElementById('button-home-create').click();
+            }
+        })
+    </script>
+    <!--Convert Langue-->
+    <script src="./js/ConvertLangue.js"></script>
+    <!--Standardize-->
+    <script src="./js/Standardize.js"></script>
+</body>
+
+</html>

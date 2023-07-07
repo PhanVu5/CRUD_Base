@@ -1,0 +1,88 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+/* Header */
+.header {
+    display: block;
+    width: 40%;
+    color: red;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid red;
+}
+
+/* InFo */
+container {
+    position: relative;
+    height: 180px;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.ip__info{
+    display: block;
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+    text-align: center;
+}
+
+.ip__name{
+    width: 50%;
+    margin: 3px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid red;
+}
+
+.selec__class{
+    width: 50%;
+    margin: 3px;
+    border: 1px solid red;
+}
+.ip__age{
+    width: 50%;
+    margin: 3px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid red;
+}
+.ip__phone{
+    width: 50%;
+    margin: 3px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid red;
+}
+.function__select {
+    position: absolute;
+    display: block;
+    bottom: 3px;
+    right: 12px;
+}
+
+button{
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: rgb(62, 127, 248);
+    color: white;
+    border: none;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+.button__cancel{
+    background-color: red;
+}
+/* Event */
+button:hover{
+    background-color: rgba(62, 127, 248, 0.527);
+}
+.button__cancel:hover{
+    background: rgba(255, 0, 0, 0.39);
+}
