@@ -1,4 +1,3 @@
-// Author : Vũ Vais
 let url = new URL(`https://6491791a2f2c7ee6c2c8472b.mockapi.io/student`)
 async function updateData(id) {
 
